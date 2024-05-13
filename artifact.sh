@@ -13,5 +13,5 @@ echo "Completed - copying file from $WARFilePath to $LocalWorkspace/target/$fold
 
 cd "$LocalWorkspace/target/"
 echo "Starting - Upload folder to S3 bucket"
-aws s3 cp $foldername "s3://cintap-artifact-test/builds/$foldername/" 
+aws s3 cp $foldername "s3://cintap-artifact-test/builds/$foldername/" --recursive
 echo "Completed - Upload folder to S3 bucket"
