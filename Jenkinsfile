@@ -9,23 +9,23 @@ pipeline {
      }
      stage('build') {
        steps {
-          sh 'mvn package'
+          sh 'mvn clean package'
     
        }
      }
      stage('sonar') {
        steps {
           sh 'mvn sonar:sonar \
-  -Dsonar.projectKey=cintap \
-  -Dsonar.host.url=http://100.27.11.219:9000 \
-  -Dsonar.login=ddd09a7d8d2005118d19245798e3633cf179763c'
+  -Dsonar.projectKey=cintapproject \
+  -Dsonar.host.url=http://$sonar:9000 \
+  -Dsonar.login=b91f9dfb81ad7dcebf2367312a29311659e680b4'
     
        }
      }
      stage('artifact') {
        steps {
-          sh 'chmod 777 artifact.sh'
-          sh './artifact.sh'
+          sh 'chmod 777 artifact-upload.sh'
+          sh './artifact-upload.sh'
     
        }
      }
@@ -33,11 +33,29 @@ pipeline {
        steps {
           sshagent(['ec2-user']) {
               sh 'pwd'
-              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/gitpipeline/target/*.jar ec2-user@172.31.52.47:/usr/local/tomcat/webapps/' 
+              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/endtoend/target/*.war ec2-user@$tomcat:/usr/local/tomcat/webapps/' 
         }
     
        }
      }
 
      }
+	 post {
+      always {
+       emailext (
+          subject: "pipeline status: ${BUILD_NUMBER}",
+          body:'''<html>
+          <body>
+           <p>Build Status: ${BUILD_STATUS}</p>
+<p>Build Number: ${BUILD_NUMBER}</p>
+<p>Check the <a href="${BUILD_URL}">console output</a>.</p>
+</body>
+</html>''',
+to: 'ajay.p@cintap.com',
+from:'ajayawsdevops773@gmail.com',
+replyTo:'ajay.p@cintap.com',
+mimeType:'text/html'
+)
+}
+}
 }
