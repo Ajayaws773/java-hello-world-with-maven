@@ -24,8 +24,8 @@ pipeline {
      }
      stage('artifact') {
        steps {
-          sh 'chmod 777 artifact-upload.sh'
-          sh './artifact-upload.sh'
+          sh 'chmod 777 artifact.sh'
+          sh './artifact.sh'
     
        }
      }
