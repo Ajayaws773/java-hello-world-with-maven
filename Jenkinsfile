@@ -47,8 +47,18 @@ pipeline {
           body:'''<html>
           <body>
 	   <p>Build Status: $sonar</p>
+    <p>Build Status: $PROJECT_NAME</p>
+
            <p>Build Status: ${BUILD_STATUS}</p>
            <p>Build Number: ${BUILD_NUMBER}</p>
+	   <p>${BUILD_URL}</p>
+     <p>${PROJECT_URL}</p>
+     <p>${PROJECT_DISPLAY_NAME}</p>
+     <p>${PROJECT_NAME}</p>
+     <p>${JENKINS_URL}</p>
+     <p>${GIT_BRANCH}</p>
+     <p>${JOB_DESCRIPTION}</p>
+    <p>${BUILD_URL}</p>
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
           </html>''',
