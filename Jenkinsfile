@@ -46,6 +46,7 @@ pipeline {
           subject: "pipeline status: ${BUILD_NUMBER}",
           body:'''<html>
           <body>
+	   <p>Build Status: $sonar</p>
            <p>Build Status: ${BUILD_STATUS}</p>
            <p>Build Number: ${BUILD_NUMBER}</p>
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
