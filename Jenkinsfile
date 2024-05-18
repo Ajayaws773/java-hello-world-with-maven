@@ -51,9 +51,9 @@ pipeline {
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
           </html>''',
-          to: 'ajayawsdevops773@gmail.com',
+          to: 'ajay.p@cintap.com',
           from: 'ajayawsdevops773@gmail.com',
-          replyTo: 'ajay.p@cintap.com',
+          replyTo: 'ajayawsdevops773@gmail.com',
           mimeType: 'text/html'
 )
 }
