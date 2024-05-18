@@ -47,14 +47,14 @@ pipeline {
           body:'''<html>
           <body>
            <p>Build Status: ${BUILD_STATUS}</p>
-<p>Build Number: ${BUILD_NUMBER}</p>
-<p>Check the <a href="${BUILD_URL}">console output</a>.</p>
-</body>
-</html>''',
-to: 'ajay.p@cintap.com',
-from:'ajayawsdevops773@gmail.com',
-replyTo:'ajay.p@cintap.com',
-mimeType:'text/html'
+           <p>Build Number: ${BUILD_NUMBER}</p>
+           <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
+          </body>
+          </html>''',
+          to: 'ajayawsdevops773@gmail.com',
+          from: 'ajayawsdevops773@gmail.com',
+          replyTo: 'ajay.p@cintap.com',
+          mimeType: 'text/html'
 )
 }
 }
