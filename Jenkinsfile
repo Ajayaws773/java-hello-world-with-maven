@@ -24,7 +24,7 @@ pipeline {
      }
      stage('artifact') {
        steps {
-          sh 'chmod 777 artifact.sh'
+          sh 'chmod 777 jenkins/artifact.sh'
           sh './jenkins/artifact.sh'
     
        }
