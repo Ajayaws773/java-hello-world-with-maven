@@ -32,12 +32,12 @@ pipeline {
      }
      stage('deploy') {
        steps {
-          sh '''
-          
-          echo $WORKSPACE
-         // scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/$WAR_FILE $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
-         
-        ''' 
+         sshagent(credentials: ['tomcatssh'], ignoreMissing: true) {
+	sh '''
+        echo $WORKSPACE
+        scp -o StrictHostKeyChecking=no $WORKSPACE/target/*.war tomcat@$tomcatip:/usr/local/tomcat/webapps/
+	'''
+}
        }
      }
 
