@@ -31,8 +31,13 @@ pipeline {
      }
      stage('deploy') {
        steps {
-          deploy adapters: [tomcat9(credentialsId: 'tomcatdeploy', path: '', url: 'http://100.26.153.234:8080/')], contextPath: null, war: '**/*.war'
-    
+          sshagent(['ec2-user']) {
+              sh 'pwd'
+		sh 'whoami'
+		  sh 'sudo chown -R ec2-user:ec2-user /usr/local/tomcat'
+              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/endtoend/target/*.war ec2-user@$tomcat:/usr/local/tomcat/webapps/' 
+       sh 'sudo chown -R tomcat:tomcat /usr/local/tomcat'
+	  }
        }
      }
 
