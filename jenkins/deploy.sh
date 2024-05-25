@@ -33,6 +33,7 @@ elif [[ $Environment == "UAT" ]]; then
 fi
 
 
+
 #TargetServersListCount=${#TargetServersList[@]}
 
 echo $TargetServersList
