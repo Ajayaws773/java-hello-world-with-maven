@@ -3,7 +3,7 @@ pipeline {
 	stages {
 	stage('code') {
        steps {
-          git branch: '$branch', changelog: false, credentialsId: 'Bitbucket', poll: false, url: 'https://bitbucket.org/$worksp/$projectname/'
+          git changelog: false, poll: false, url: 'https://github.com/Ajayaws773/java-hello-world-with-maven.git'
     
        }
      }
@@ -24,8 +24,8 @@ pipeline {
      }
      stage('artifact') {
        steps {
-          sh 'chmod 777 artifact-upload.sh'
-          sh './artifact-upload.sh'
+          sh 'chmod 777 artifact.sh'
+          sh './artifact.sh'
     
        }
      }
