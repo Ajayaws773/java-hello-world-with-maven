@@ -33,7 +33,7 @@ pipeline {
        steps {
           sshagent(['ec2-user']) {
               sh 'pwd'
-              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/endtoend/target/*.war ec2-user@$tomcat:/usr/local/tomcat/webapps/' 
+              sh 'sudo scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/endtoend/target/*.war ec2-user@$tomcat:/usr/local/tomcat/webapps/' 
         }
     
        }
