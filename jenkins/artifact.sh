@@ -3,7 +3,7 @@ LocalWorkspace=${WORKSPACE}
 WARFilePath="$LocalWorkspace/target/*.jar"
 echo "WAR File Path is ( Source path from the server) : $WARFilePath"
 
-foldername="Bpi-$(date +"%d-%m-%Y-%H-%M-%S")"
+foldername="$projectname-$(date +"%d-%m-%Y-%H-%M-%S")"
 mkdir -p "$LocalWorkspace/target/$foldername"
 echo "Folder is created"
 
