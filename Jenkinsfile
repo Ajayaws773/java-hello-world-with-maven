@@ -1,6 +1,15 @@
 pipeline {
 	agent any
-	
+	options {
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
+  }    
+  environment {
+    TOMCAT_CREDS=credentials('tomcatssh')
+    TOMCAT_SERVER=$tomcatip
+    ROOT_WAR_LOCATION=$WORKSPACE
+    LOCAL_WAR_DIR=$WORKSPACE/target
+    WAR_FILE=*.jar
+  }
 	stages {
 	stage('code') {
        steps {
@@ -35,7 +44,10 @@ pipeline {
          sshagent(credentials: ['tomcatssh'], ignoreMissing: true) {
 	sh '''
         echo $WORKSPACE
-        scp -o StrictHostKeyChecking=no $WORKSPACE/target/*.jar tomcat@$tomcatip:/usr/local/tomcat/webapps/
+	echo $TOMCAT_SERVER
+ echo $ROOT_WAR_LOCATION
+ echo $LOCAL_WAR_DIR
+           scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/$WAR_FILE $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
 	'''
 }
        }
