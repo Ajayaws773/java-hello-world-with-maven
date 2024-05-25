@@ -3,7 +3,7 @@ pipeline {
 	stages {
 	stage('code') {
        steps {
-          git changelog: false, poll: false, url: 'https://github.com/Ajayaws773/java-hello-world-with-maven.git'
+          git branch: '$branch', changelog: false, credentialsId: 'Bitbucket', poll: false, url: 'https://bitbucket.org/$worksp/$projectname/'
     
        }
      }
