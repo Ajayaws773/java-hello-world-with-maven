@@ -1,11 +1,6 @@
 pipeline {
 	agent any
-	environment {
-    TOMCAT_CREDS=credentials('tomcatssh')
-    TOMCAT_SERVER=$tomcat
-		WAR_LOCATION = $WORKSPACE
-		
-  }
+	
 	stages {
 	stage('code') {
        steps {
@@ -39,7 +34,7 @@ pipeline {
        steps {
           sh '''
           
-          echo $WAR_LOCATION
+          echo $WORKSPACE
          // scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/$WAR_FILE $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
          
         ''' 
