@@ -5,9 +5,9 @@ pipeline {
   }    
   environment {
     TOMCAT_CREDS=credentials('tomcatssh')
-    TOMCAT_SERVER=$tomcatip
-    ROOT_WAR_LOCATION=$WORKSPACE
-    LOCAL_WAR_DIR=$WORKSPACE/target
+    TOMCAT_SERVER='$tomcatip'
+    ROOT_WAR_LOCATION='$WORKSPACE'
+    LOCAL_WAR_DIR='$WORKSPACE/target'
 
   }
 	stages {
