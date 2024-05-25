@@ -15,23 +15,30 @@ DevEnvServers=("100.26.153.234")
 UATUIServers=("54.167.116.236")
 UATb2bServers=("100.26.153.234")
 
-
-
 echo "##################################################################"
 TargetServersList=""
+echo "Debug: Starting script"
 if [[ $Environment == "Dev" ]]; then
+  echo "Debug: Environment is Dev"
   echo "The Target environment is : Dev"
   TargetServersList=("${DevEnvServers[@]}")
 elif [[ $Environment == "UAT" ]]; then
+  echo "Debug: Environment is UAT"
   if [[ $component == "ui" ]]; then
+    echo "Debug: Component is ui"
     echo "The Target environment is : UATUI"
     TargetServersList=("${UATUIServers[@]}")
   elif [[ $component == "service" ]]; then
+    echo "Debug: Component is service"
     echo "The Target environment is : UAT"
     TargetServersList=("${UATb2bServers[@]}")
+  else
+    echo "Debug: Component is unknown"
   fi
+else
+  echo "Debug: Environment is unknown"
 fi
-
+echo "Debug: Script ended"
 
 
 #TargetServersListCount=${#TargetServersList[@]}
@@ -45,14 +52,8 @@ echo "$value"
 done   
 echo "##################################################################"
 
-
-
 ########## Starting for the loop if we have to deploy to multiple servers #########
 for TargetServer in "${TargetServersList[@]}" ; do
-
-
-
-
 
 ### Copying latest files to Tomcat
 echo "### Starting - Copying WAR file(s) to the server : $TargetServer ###" 
