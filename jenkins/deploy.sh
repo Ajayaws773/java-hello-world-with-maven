@@ -59,3 +59,5 @@ for TargetServer in "${TargetServersList[@]}" ; do
 echo "### Starting - Copying WAR file(s) to the server : $TargetServer ###" 
 scp $WORKSPACE/target/*.jar tomcat@$TargetServersList:/usr/local/tomcat/webapps/
 echo "### Completed - Copying WAR file(s) to the server : $TargetServer ###" 
+
+done
