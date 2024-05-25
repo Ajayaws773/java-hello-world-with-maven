@@ -36,7 +36,8 @@ pipeline {
 	sh '''
         echo $WORKSPACE
 	echo $tomcatip
-           scp $WORKSPACE/target/*.jar tomcat@$tomcatip:/usr/local/tomcat/webapps/
+           chmod 777 jenkins/deploy.sh
+	   ./jenkins/deploy.sh
 	'''
 }
        }
