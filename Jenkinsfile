@@ -1,12 +1,6 @@
 pipeline {
 	agent any
-	options {
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
-  }    
-  environment {
-    TOMCAT_CREDS=credentials('tomcatssh')
-   
-  }
+	
 	stages {
 	stage('code') {
        steps {
