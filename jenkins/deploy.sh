@@ -23,14 +23,16 @@ if [[ $Environment == "Dev" ]]
 then
   echo "The Target environment is : Dev"
   TargetServersList=("${DevEnvServers[@]}")
-elif [[ $Environment == "UAT"] || [$component== "ui"]]
+elif [[ $Environment == "UAT"] ]
 then
-  echo "The Target environment is : UATUI"
-  TargetServersList=("${UATUIServers[@]}")
-elif [[ $Environment == "UAT"] || [$component== "service"]]
-then
-  echo "The Target environment is : UAT"
-  TargetServersList=("${UATb2bServers[@]}")
+  if [[ $component== "ui"]]
+    echo "The Target environment is : UATUI"
+    TargetServersList=("${UATUIServers[@]}")
+  elif [ [$component== "service"]]
+  then
+    echo "The Target environment is : UAT"
+    TargetServersList=("${UATb2bServers[@]}")
+  fi
 fi
 
 #TargetServersListCount=${#TargetServersList[@]}
