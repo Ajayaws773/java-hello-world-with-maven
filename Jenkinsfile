@@ -5,10 +5,7 @@ pipeline {
   }    
   environment {
     TOMCAT_CREDS=credentials('tomcatssh')
-    TOMCAT_SERVER='$tomcatip'
-    ROOT_WAR_LOCATION='$WORKSPACE'
-    LOCAL_WAR_DIR='$WORKSPACE/target'
-
+   
   }
 	stages {
 	stage('code') {
@@ -44,10 +41,8 @@ pipeline {
          sshagent(credentials: ['tomcatssh'], ignoreMissing: true) {
 	sh '''
         echo $WORKSPACE
-	echo $TOMCAT_SERVER
- echo $ROOT_WAR_LOCATION
- echo $LOCAL_WAR_DIR
-           scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/*.jar $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
+	echo $tomcatip
+           scp -i $TOMCAT_CREDS $WORKSPACE/target/*.jar $TOMCAT_CREDS_USR@$tomcatip:$ROOT_WAR_LOCATION/ROOT.war
 	'''
 }
        }
