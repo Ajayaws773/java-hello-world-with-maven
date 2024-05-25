@@ -32,7 +32,7 @@ pipeline {
      }
      stage('deploy') {
        steps {
-         sshagent(credentials: ['tomcatssh'], ignoreMissing: true) {
+         
 	sh '''
         echo $WORKSPACE
 	echo $tomcatip
