@@ -8,7 +8,7 @@ pipeline {
     TOMCAT_SERVER=$tomcatip
     ROOT_WAR_LOCATION=$WORKSPACE
     LOCAL_WAR_DIR=$WORKSPACE/target
-    WAR_FILE=*.jar
+
   }
 	stages {
 	stage('code') {
@@ -47,7 +47,7 @@ pipeline {
 	echo $TOMCAT_SERVER
  echo $ROOT_WAR_LOCATION
  echo $LOCAL_WAR_DIR
-           scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/$WAR_FILE $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
+           scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/*.jar $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
 	'''
 }
        }
