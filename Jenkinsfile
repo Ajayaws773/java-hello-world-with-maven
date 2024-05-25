@@ -42,7 +42,7 @@ pipeline {
 	sh '''
         echo $WORKSPACE
 	echo $tomcatip
-           scp -i $TOMCAT_CREDS $WORKSPACE/target/*.jar $TOMCAT_CREDS_USR@$tomcatip:$ROOT_WAR_LOCATION/ROOT.war
+           scp -i $TOMCAT_CREDS $WORKSPACE/target/*.jar $TOMCAT_CREDS_USR@$tomcatip:/usr/local/tomcat/webapps/
 	'''
 }
        }
