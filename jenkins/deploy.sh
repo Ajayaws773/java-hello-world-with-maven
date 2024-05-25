@@ -19,21 +19,19 @@ UATb2bServers=("100.26.153.234")
 
 echo "##################################################################"
 TargetServersList=""
-if [[ $Environment == "Dev" ]]
-then
+if [[ $Environment == "Dev" ]]; then
   echo "The Target environment is : Dev"
   TargetServersList=("${DevEnvServers[@]}")
-elif [[ $Environment == "UAT"] ]
-then
-  if [[ $component== "ui"]]
+elif [[ $Environment == "UAT" ]]; then
+  if [[ $component == "ui" ]]; then
     echo "The Target environment is : UATUI"
     TargetServersList=("${UATUIServers[@]}")
-  elif [ [$component== "service"]]
-  then
+  elif [[ $component == "service" ]]; then
     echo "The Target environment is : UAT"
     TargetServersList=("${UATb2bServers[@]}")
   fi
 fi
+
 
 #TargetServersListCount=${#TargetServersList[@]}
 
