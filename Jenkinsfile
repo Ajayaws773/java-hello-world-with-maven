@@ -32,10 +32,10 @@ pipeline {
      }
      stage('deploy') {
        steps {
-         sshagent(credentials: ['tomcatssh'], ignoreMissing: true) {
+         sshagent(credentials: ['ec2-user'], ignoreMissing: true) {
 	sh '''
         echo $WORKSPACE
-        scp -o StrictHostKeyChecking=no $WORKSPACE/target/*.war tomcat@$tomcatip:/usr/local/tomcat/webapps/
+        scp -o StrictHostKeyChecking=no $WORKSPACE/target/*.war ec2-user@$tomcatip:/usr/local/tomcat/webapps/
 	'''
 }
        }
