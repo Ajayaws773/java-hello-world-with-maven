@@ -1,5 +1,11 @@
 pipeline {
 	agent any
+	environment {
+    TOMCAT_CREDS=credentials('tomcatssh')
+    TOMCAT_SERVER=$tomcat
+		WAR_LOCATION = $WORKSPACE
+		
+  }
 	stages {
 	stage('code') {
        steps {
@@ -31,13 +37,12 @@ pipeline {
      }
      stage('deploy') {
        steps {
-          sshagent(['tomcatssh']) {
-              sh 'pwd'
-		sh 'whoami'
-		//  sh 'sudo chown -R ec2-user:ec2-user /usr/local/tomcat'
-              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/endtoend/target/*.war tomcat@$tomcat:/usr/local/tomcat/webapps/' 
-     // sh 'sudo chown -R tomcat:tomcat /usr/local/tomcat'
-	  }
+          sh '''
+          
+          echo $WAR_LOCATION
+         // scp -i $TOMCAT_CREDS $LOCAL_WAR_DIR/$WAR_FILE $TOMCAT_CREDS_USR@$TOMCAT_SERVER:$ROOT_WAR_LOCATION/ROOT.war
+         
+        ''' 
        }
      }
 
