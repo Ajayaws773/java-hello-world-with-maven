@@ -60,7 +60,7 @@ pipeline {
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
           </html>''',
-          to: 'ajay.p@cintap.com','chary@cintap.com',
+          to: 'ajay.p@cintap.com,chary@cintap.com',
           from: 'ajayawsdevops773@gmail.com',
           replyTo: 'devops@cintap.com',
           mimeType: 'text/html'
