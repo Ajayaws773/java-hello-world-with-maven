@@ -53,10 +53,10 @@ pipeline {
 	  <p>User: ${BUILD_USER}</p>
            <p>Build Status: ${BUILD_STATUS}</p>
            <p>Build Number: ${BUILD_NUMBER}</p>
-	       <p>Repository: ${projectname}</p>
-	${BUILD_USER}
-           <p>project url: ${PROJECT_URL}</p>
-           <p>Project name: ${PROJECT_NAME}</p>
+	   <p>Environment: ${Environment}</p>
+           <p>ServiceToDeploy: ${ServiceToDeploy}</p>
+	   <p>Repository: ${projectname}</p>
+           <p>Pipeline name: ${PROJECT_NAME}</p>
            <p>Job description: ${JOB_DESCRIPTION}</p>
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
