@@ -47,28 +47,22 @@ pipeline {
 	 post {
       always {
        emailext (
-          subject: "pipeline status: ${BUILD_NUMBER}",
+          subject: "$BUILD_USER-$Environment-$projectname-$component-${BUILD_NUMBER}-${BUILD_STATUS}",
           body:'''<html>
           <body>
-	   <p>Build Status: $sonar</p>
-    <p>Build Status: $PROJECT_NAME</p>
-
            <p>Build Status: ${BUILD_STATUS}</p>
            <p>Build Number: ${BUILD_NUMBER}</p>
-	   <p>${BUILD_USER}</p>
-     <p>${PROJECT_URL}</p>
-     <p>${PROJECT_DISPLAY_NAME}</p>
-     <p>${PROJECT_NAME}</p>
-     <p>${JENKINS_URL}</p>
-     <p>${GIT_BRANCH}</p>
-     <p>${JOB_DESCRIPTION}</p>
-    <p>${BUILD_URL}</p>
+	       <p>Repository: ${projectname}</p>
+           <p>project url: ${PROJECT_URL}</p>
+           <p>Project name: ${PROJECT_NAME}</p>
+           <p>Job description: ${JOB_DESCRIPTION}</p>
+           <p>Build result: ${BUILD_URL}</p>
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
           </html>''',
-          to: 'ajay.p@cintap.com',
+          to: 'ajay.p@cintap.com','chary@cintap.com'
           from: 'ajayawsdevops773@gmail.com',
-          replyTo: 'ajayawsdevops773@gmail.com',
+          replyTo: 'devops@cintap.com',
           mimeType: 'text/html'
 )
 }
