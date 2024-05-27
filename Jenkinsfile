@@ -55,7 +55,7 @@ pipeline {
 
            <p>Build Status: ${BUILD_STATUS}</p>
            <p>Build Number: ${BUILD_NUMBER}</p>
-	   <p>${BUILD_USER_ID}</p>
+	   <p>${BUILD_USER}</p>
      <p>${PROJECT_URL}</p>
      <p>${PROJECT_DISPLAY_NAME}</p>
      <p>${PROJECT_NAME}</p>
