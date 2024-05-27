@@ -47,7 +47,7 @@ pipeline {
 	 post {
       always {
        emailext (
-          subject: " ${BUILD_USER} pipeline status: ${BUILD_NUMBER}",
+          subject: "pipeline status: ${BUILD_NUMBER}",
           body:'''<html>
           <body>
 	  <p>User: ${BUILD_USER}</p>
@@ -61,7 +61,7 @@ pipeline {
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
           </html>''',
-          to: 'ajay.p@cintap.com,chary@cintap.com',
+          to: 'ajay.p@cintap.com',
           from: 'ajayawsdevops773@gmail.com',
           replyTo: 'devops@cintap.com',
           mimeType: 'text/html'
