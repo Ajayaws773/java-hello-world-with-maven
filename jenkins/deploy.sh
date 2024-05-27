@@ -60,3 +60,43 @@ scp $WORKSPACE/target/*.jar tomcat@$TargetServersList:/usr/local/tomcat/webapps/
 echo "### Completed - Copying WAR file(s) to the server : $TargetServer ###" 
 
 done
+
+
+
+
+############## Staring - Health check section ##############
+if [[ $ServiceToDeploy == "Bpi" ]]
+then 
+  HealthCheckComponentToCheck="bpi-service"
+elif [[ $ServiceToDeploy == "OTC" ]]
+then 
+  HealthCheckComponentToCheck="otc-service"
+elif [[ $ServiceToDeploy == "Partners" ]]
+then 
+  HealthCheckComponentToCheck="partner-service"
+fi
+
+HealthCheckURL="https://$Environment.services.cintapcloud.com/$HealthCheckComponentToCheck/actuator/health"
+echo "### Health Check URL is : $HealthCheckURL"
+
+
+for ((i=1;i<=5;i++)); do  
+echo "Hitting the URL each time: $i"
+curl --header "Connection: keep-alive" $HealthCheckURL;
+sleep 10;
+done
+
+echo "Health Check, Hitting URL 1st time"
+ResponseCode=$(curl $HealthCheckURL)
+echo "###################### HEALTH CHECK STATUS ###########################"
+echo "Response Code is : $ResponseCode"
+echo "###################### HEALTH CHECK STATUS ###########################"
+
+
+if [[ $ResponseCode == *"UP"* ]]
+then
+echo "Service is up and running"
+else
+echo "Service is NOT up, please check"
+fi
+############## Completed - Health check section ##############
