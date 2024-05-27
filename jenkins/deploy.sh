@@ -23,14 +23,19 @@ then
   TargetServersList=("${DevEnvServers[@]}")
 elif [[ $Environment == "UAT"] ]
 then
-  if [[ $component== "ui"]]
+  if [[ $component== "ui"]] 
+   then
     echo "The Target environment is : UATUI"
     TargetServersList=("${UATUIServers[@]}")
   elif [ [$component== "service"]]
   then
     echo "The Target environment is : UAT"
     TargetServersList=("${UATb2bServers[@]}")
-fi
+else
+    echo "Debug: Component is unknown"
+  fi
+else
+  echo "Debug: Environment is unknown"
 fi
 
 #TargetServersListCount=${#TargetServersList[@]}
