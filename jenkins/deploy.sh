@@ -17,29 +17,21 @@ UATb2bServers=("100.26.153.234")
 
 echo "##################################################################"
 TargetServersList=""
-echo "Debug: Starting script"
-if [[ $Environment == "Dev" ]]; then
-  echo "Debug: Environment is Dev"
+if [[ $Environment == "Dev" ]]
+then
   echo "The Target environment is : Dev"
   TargetServersList=("${DevEnvServers[@]}")
-elif [[ $Environment == "UAT" ]]; then
-  echo "Debug: Environment is UAT"
-  if [[ $component == "ui" ]]; then
-    echo "Debug: Component is ui"
+elif [[ $Environment == "UAT"] ]
+then
+  if [[ $component== "ui"]]
     echo "The Target environment is : UATUI"
     TargetServersList=("${UATUIServers[@]}")
-  elif [[ $component == "service" ]]; then
-    echo "Debug: Component is service"
+  elif [ [$component== "service"]]
+  then
     echo "The Target environment is : UAT"
     TargetServersList=("${UATb2bServers[@]}")
-  else
-    echo "Debug: Component is unknown"
-  fi
-else
-  echo "Debug: Environment is unknown"
 fi
-echo "Debug: Script ended"
-
+fi
 
 #TargetServersListCount=${#TargetServersList[@]}
 
