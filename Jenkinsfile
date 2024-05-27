@@ -57,7 +57,6 @@ pipeline {
            <p>ServiceToDeploy: ${ServiceToDeploy}</p>
 	   <p>Repository: ${projectname}</p>
            <p>Pipeline name: ${PROJECT_NAME}</p>
-           <p>Job description: ${JOB_DESCRIPTION}</p>
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
           </html>''',
