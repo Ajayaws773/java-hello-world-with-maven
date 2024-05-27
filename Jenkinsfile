@@ -47,7 +47,7 @@ pipeline {
 	 post {
       always {
        emailext (
-          subject: "pipeline status: ${BUILD_STATUS}",
+          subject: "pipeline status: ${BUILD_NUMBER}",
           body:'''<html>
           <body>
 	  <p>User: ${BUILD_USER}</p>
