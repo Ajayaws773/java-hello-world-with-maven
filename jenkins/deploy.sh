@@ -11,9 +11,9 @@ echo "The service to deploy is : $component"
 
 
 ########## Declaring the server names by the environment ##########
-DevEnvServers=("100.26.153.234")
-UATUIServers=("54.167.116.236")
-UATb2bServers=("100.26.153.234")
+DevEnvServers=("172.31.52.47")
+UATUIServers=("172.31.18.46")
+UATb2bServers=("172.31.52.47")
 
 echo "##################################################################"
 TargetServersList=""
