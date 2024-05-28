@@ -55,7 +55,7 @@ pipeline {
            <p>Build Number: ${BUILD_NUMBER}</p>
 	   <p>Environment: ${Environment}</p>
            <p>ServiceToDeploy: ${ServiceToDeploy}</p>
-	   <p>Repository: ${projectname}</p>
+	   <p>Repository: ${repositoryname}</p>
            <p>Pipeline name: ${PROJECT_NAME}</p>
            <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
           </body>
